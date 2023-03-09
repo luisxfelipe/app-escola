@@ -10,7 +10,7 @@ import {
 import { toast } from "react-toastify";
 
 import { Container } from "../../styles/GlobalStyles";
-import { AlunoContainer, ProfilePicture } from "./styled";
+import { AlunoContainer, ProfilePicture, NovoAluno } from "./styled";
 import axios from "../../services/axios";
 
 import Loading from "../../components/Loading";
@@ -63,12 +63,15 @@ export default function Alunos() {
     <Container>
       <Loading isLoading={isLoading} />
       <h1>Alunos</h1>
+
+      <NovoAluno to="/aluno">Novo Aluno</NovoAluno>
+
       <AlunoContainer>
         {alunos.map((aluno, index) => (
           <div key={String(aluno.id)}>
             <ProfilePicture>
               {get(aluno, "Fotos[0].url", false) ? (
-                <img src={aluno.Fotos[0].url} alt="" />
+                <img crossOrigin="" src={aluno.Fotos[0].url} alt="" />
               ) : (
                 <FaUserCircle size={36} />
               )}
